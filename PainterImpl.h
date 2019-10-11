@@ -1,5 +1,6 @@
 #pragma once
 #include <rlutil.h>
+#include <cstdint>
 
 struct PainterImpl {
 	PainterImpl() = default;
