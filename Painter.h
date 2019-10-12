@@ -3,8 +3,8 @@
 #include <memory>
 
 struct Painter {
-	Painter() : m_painter(new PainterImpl) {}
 	~Painter() = default;
+	Painter() : m_painter(new PainterImpl) {}
 
 	
 	void printColoredText(
