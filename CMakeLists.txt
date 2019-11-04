@@ -7,12 +7,14 @@ add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/rlutil" "${CMAKE_BINARY_DIR}/rluti
 set(SOURCES
 	Painter.cpp
 	PainterImpl.cpp
+	Figure.cpp
 	)
 
 set(HEADERS
 	Painter.h
 	PainterImpl.h
+	Figure.h
 	)
 
-add_library(Painter STATIC ${SOURCES} ${HEADERS})
-target_include_directories(Painter PUBLIC rlutil)
+add_library(Core STATIC ${SOURCES} ${HEADERS})
+target_include_directories(Core PUBLIC rlutil)
