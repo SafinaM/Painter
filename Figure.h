@@ -14,6 +14,7 @@ struct Figure {
 	int getXOffset() const noexcept;
 	int getYOffset() const noexcept;
 	uint32_t getColor() const noexcept;
+	void setColor(const uint32_t color) noexcept;
 
 protected:
 	std::vector<std::vector<uint8_t>> points;

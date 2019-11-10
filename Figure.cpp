@@ -44,3 +44,6 @@ uint32_t Figure::getColor() const noexcept {
 	return m_Color;
 }
 
+void Figure::setColor(const uint32_t color) noexcept {
+	m_Color = color;
+}
