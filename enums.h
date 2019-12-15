@@ -14,3 +14,9 @@ enum struct Direction: int {
 	Up
 };
 
+enum struct Action: uint32_t {
+	Move            = 0,
+	ChooseDirection,
+	Shoot
+};
+
