@@ -26,9 +26,12 @@ struct Figure {
 	void setColor(const uint32_t color) noexcept;
 
 protected:
-	std::vector<std::vector<uint8_t>> points;
+	
+	Figure(Orientation orientation);
 	
 	Orientation m_orientation;
+	
+	std::vector<std::vector<uint8_t>> points;
 	
 	int m_offsetX = 0;
 	int m_offsetY = 0;
