@@ -5,13 +5,24 @@
 
 Figure::Figure(Orientation orientation): m_orientation(orientation){}
 
-void Figure::setOrientationType(Orientation orientation) {
+void Figure::setOrientationTypeAndDirection(Orientation orientation) {
 	m_orientation = orientation;
-}
-
-std::vector<std::vector<uint8_t>> Figure::getPoints() const {
-	assert(points.size() != 0);
-	return points;
+	switch (orientation) {
+		case Orientation::First_0:
+			m_direction = Direction::Up;
+			break;
+		case Orientation::Third_180:
+			m_direction = Direction::Down;
+			break;
+		case Orientation::Fourth_270:
+			m_direction = Direction::Left;
+			break;
+		case Orientation::Second_90:
+			m_direction = Direction::Right;
+			break;
+		default:
+			break;
+	}
 }
 
 void Figure::move(Direction direction) noexcept {
@@ -27,6 +38,11 @@ void Figure::move(Direction direction) noexcept {
 		std::cerr << "do not have such direction" << std::endl;
 		exit(EXIT_FAILURE);
 	}
+}
+
+std::vector<std::vector<uint8_t>> Figure::getPoints() const {
+	assert(points.size() != 0);
+	return points;
 }
 
 void Figure::setXY(int x, int y) noexcept {
@@ -49,3 +65,12 @@ uint32_t Figure::getColor() const noexcept {
 void Figure::setColor(const uint32_t color) noexcept {
 	m_Color = color;
 }
+
+Orientation Figure::getOrientation() const noexcept {
+	return m_orientation;
+}
+
+Direction Figure::getDirection() const noexcept {
+	return m_direction;
+}
+

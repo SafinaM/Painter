@@ -11,7 +11,7 @@ struct Figure {
 	
 	std::vector<std::vector<uint8_t>> getPoints() const;
 	
-	void setOrientationType(Orientation orientation);
+	void setOrientationTypeAndDirection(Orientation orientation);
 	
 	void move(Direction direction) noexcept;
 	
@@ -23,6 +23,10 @@ struct Figure {
 	
 	uint32_t getColor() const noexcept;
 	
+	Orientation getOrientation() const noexcept;
+	
+	Direction getDirection() const noexcept;
+	
 	void setColor(const uint32_t color) noexcept;
 
 protected:
@@ -30,6 +34,7 @@ protected:
 	Figure(Orientation orientation);
 	
 	Orientation m_orientation;
+	Direction m_direction;
 	
 	std::vector<std::vector<uint8_t>> points;
 	
