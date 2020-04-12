@@ -1,8 +1,8 @@
 #include "BoardBase.h"
 
 void BoardBase::debugPrint() const {
-	for (uint8_t i = 0; i < heightBoard; ++i) {
-		for (uint8_t j = 0; j < widthBoard; ++j) {
+	for (uint8_t i = 0; i < m_heightBoard; ++i) {
+		for (uint8_t j = 0; j < m_widthBoard; ++j) {
 			std::cout << +buffer[i][j];
 		}
 		std::cout << std::endl;
@@ -11,7 +11,7 @@ void BoardBase::debugPrint() const {
 
 // for debug
 void BoardBase::setLine(uint32_t numY, uint32_t value) {
-	for (uint32_t j = 0; j < widthBoard; ++j) {
+	for (uint32_t j = 0; j < m_widthBoard; ++j) {
 		buffer[numY][j] = value;
 	}
 }
@@ -42,8 +42,8 @@ bool BoardBase::allowMove(Direction direction, const Figure &figure) const {
 }
 
 void BoardBase::clear() {
-	for (uint8_t i = 0; i < heightBoard; ++i) {
-		for (uint8_t j = 0; j < widthBoard; ++j) {
+	for (uint8_t i = 0; i < m_heightBoard; ++i) {
+		for (uint8_t j = 0; j < m_widthBoard; ++j) {
 			buffer[i][j] = 0;
 		}
 		std::cout << std::endl;
@@ -74,12 +74,20 @@ bool BoardBase::isCrossedFigureWithWalls(
 		for (auto j = 0; j < points[0].size(); ++j) {
 			if (!points[i][j])
 				continue;
-			if ((j + xOffset >= widthBoard) ||
+			if ((j + xOffset >= m_widthBoard) ||
 				(j + xOffset < 0) ||
-				(i + yOffset >= heightBoard)) {
+				(i + yOffset >= m_heightBoard)) {
 				return false;
 			}
 		}
 	}
 	return true;
+}
+
+uint32_t BoardBase::getWidth() const noexcept {
+	return  m_widthBoard;
+}
+
+uint32_t BoardBase::getHeight() const noexcept {
+	return  m_heightBoard;
 }
