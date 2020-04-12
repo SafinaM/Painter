@@ -3,7 +3,7 @@
 #include <memory>
 
 enum BackgroundColor: int {
-	BC_DEFUALT    =-1,
+	BC_DEFAULT    =-1,
 	BC_BLACK      = 0,
 	BC_BLUE       = 1,
 	BC_GREEN      = 2,
