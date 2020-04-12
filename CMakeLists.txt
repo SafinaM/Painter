@@ -8,11 +8,13 @@ set(SOURCES
 	Painter.cpp
 	PainterImpl.cpp
 	Figure.cpp
+	BoardBase.cpp
 	)
 
 set(HEADERS
 	Painter.h
 	PainterImpl.h
+	BoardBase.h
 	Figure.h
 	)
 
