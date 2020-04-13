@@ -36,9 +36,10 @@ bool BoardBase::allowMove(Direction direction, const Figure &figure) const {
 		std::cerr << "User error: unsupported direction type." << std::endl;
 	}
 	
-	return
-		isCrossedFigureWithBuffer(points, xOffset, yOffset) &&
-			isCrossedFigureWithWalls(points, xOffset, yOffset);
+	if (!isCrossedFigureWithWalls(points, xOffset, yOffset))
+		return false;
+	
+	return isCrossedFigureWithBuffer(points, xOffset, yOffset);
 }
 
 void BoardBase::clear() {
