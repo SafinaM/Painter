@@ -36,10 +36,10 @@ bool BoardBase::allowMove(Direction direction, const Figure &figure) const {
 		std::cerr << "User error: unsupported direction type." << std::endl;
 	}
 	
-	if (!isCrossedFigureWithWalls(points, xOffset, yOffset))
+	if (isCrossedFigureWithWalls(points, xOffset, yOffset))
 		return false;
 	
-	return isCrossedFigureWithBuffer(points, xOffset, yOffset);
+	return !isCrossedFigureWithBuffer(points, xOffset, yOffset);
 }
 
 void BoardBase::clear() {
@@ -59,11 +59,11 @@ bool BoardBase::isCrossedFigureWithBuffer(
 		for (auto j = 0; j < points[0].size(); ++j) {
 			// if buffer elements points are busy we cannot do this action
 			if (points[i][j] && buffer[i + yOffset][j + xOffset]) {
-				return false;
+				return true;
 			}
 		}
 	}
-	return true;
+	return false;
 }
 
 bool BoardBase::isCrossedFigureWithWalls(
@@ -78,11 +78,11 @@ bool BoardBase::isCrossedFigureWithWalls(
 			if ((j + xOffset >= m_widthBoard) ||
 				(j + xOffset < 0) ||
 				(i + yOffset >= m_heightBoard)) {
-				return false;
+				return true;
 			}
 		}
 	}
-	return true;
+	return false;
 }
 
 uint32_t BoardBase::getWidth() const noexcept {
