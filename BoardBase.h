@@ -10,9 +10,12 @@
 
 
 struct BoardBase {
-	BoardBase(uint32_t width, uint32_t height) : m_widthBoard(width), m_heightBoard(height),
-		buffer (std::vector<std::vector<uint8_t>>(m_heightBoard, std::vector<uint8_t>(m_widthBoard, 0))) {
-	}
+	BoardBase(uint32_t width, uint32_t height);
+	
+	BoardBase(
+		uint32_t width,
+		uint32_t height,
+		const std::vector<std::vector<uint8_t>>& buf);
 	
 	void debugPrint() const;
 	
@@ -42,4 +45,7 @@ struct BoardBase {
 	uint32_t m_heightBoard;
 	
 	std::vector<std::vector<uint8_t>> buffer;
+
+private:
+	void checking();
 };

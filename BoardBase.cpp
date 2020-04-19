@@ -1,5 +1,25 @@
 #include "BoardBase.h"
 
+#include <assert.h>
+
+BoardBase::BoardBase(uint32_t width, uint32_t height) :
+	m_widthBoard(width),
+	m_heightBoard(height),
+	buffer(m_heightBoard, std::vector<uint8_t>(m_widthBoard, 0)) {
+	
+	checking();
+}
+
+BoardBase::BoardBase(
+	uint32_t width,
+	uint32_t height,
+	const std::vector<std::vector<uint8_t>>& buf) :
+	m_widthBoard(width),
+	m_heightBoard(height),
+	buffer(buf) {
+	
+	checking();
+}
 void BoardBase::debugPrint() const {
 	for (uint8_t i = 0; i < m_heightBoard; ++i) {
 		for (uint8_t j = 0; j < m_widthBoard; ++j) {
@@ -17,6 +37,15 @@ void BoardBase::setLine(uint32_t numY, uint32_t value) {
 }
 void BoardBase::setPoint(uint32_t x, uint32_t y, uint32_t value) {
 	buffer[y][x] = value;
+}
+
+void BoardBase::checking() {
+	assert(m_heightBoard > 0);
+	assert(m_widthBoard > 0);
+	assert(!buffer.empty());
+	assert(!buffer[0].empty());
+	assert(m_heightBoard == buffer.size());
+	assert(m_widthBoard == buffer[0].size());
 }
 
 bool BoardBase::allowMove(Direction direction, const Figure &figure) const {
