@@ -53,6 +53,15 @@ bool BoardBase::allowMove(Direction direction, const Figure &figure) const {
 	int xOffset = figure.getXOffset();
 	int yOffset = figure.getYOffset();
 	
+	incrementOrigins(direction, xOffset, yOffset);
+	
+	if (isCrossedFigureWithWalls(points, xOffset, yOffset))
+		return false;
+	
+	return !areCrossedBuffers(points, buffer, xOffset, yOffset);
+}
+
+void BoardBase::incrementOrigins(Direction direction, int& xOffset, int& yOffset) const noexcept {
 	if (direction == Direction::Right) {
 		++xOffset;
 	} else if (direction == Direction::Left) {
@@ -63,12 +72,8 @@ bool BoardBase::allowMove(Direction direction, const Figure &figure) const {
 		--yOffset;
 	} else {
 		std::cerr << "User error: unsupported direction type." << std::endl;
+		assert(false);
 	}
-	
-	if (isCrossedFigureWithWalls(points, xOffset, yOffset))
-		return false;
-	
-	return !isCrossedFigureWithBuffer(points, xOffset, yOffset);
 }
 
 void BoardBase::clear() {
@@ -80,8 +85,9 @@ void BoardBase::clear() {
 	}
 }
 
-bool BoardBase::isCrossedFigureWithBuffer(
-	const std::vector<std::vector<uint8_t>> &points,
+bool BoardBase::areCrossedBuffers(
+	const std::vector<std::vector<uint8_t>>& points,
+	const std::vector<std::vector<uint8_t>>& buffer,
 	int xOffset,
 	int yOffset) const {
 	for (auto i = 0; i < points.size(); ++i) {

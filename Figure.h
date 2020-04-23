@@ -28,7 +28,7 @@ struct Figure {
 	Direction getDirection() const noexcept;
 	
 	void setColor(const uint32_t color) noexcept;
-
+	
 protected:
 	
 	Figure(Orientation orientation);

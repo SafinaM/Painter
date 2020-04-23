@@ -23,8 +23,9 @@ struct BoardBase {
 	
 	void clear();
 	
-	bool isCrossedFigureWithBuffer(
-		const std::vector<std::vector<uint8_t>> &points,
+	bool areCrossedBuffers(
+		const std::vector<std::vector<uint8_t>>& points1,
+		const std::vector<std::vector<uint8_t>>& buffer,
 		int xOffset,
 		int yOffset) const;
 	
@@ -48,4 +49,6 @@ struct BoardBase {
 
 private:
 	void checking();
+	
+	void incrementOrigins(Direction direction, int& xOffset, int& yOffset) const noexcept;
 };
