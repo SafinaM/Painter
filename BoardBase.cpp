@@ -58,7 +58,7 @@ bool BoardBase::allowMove(Direction direction, const Figure &figure) const {
 	if (isCrossedFigureWithWalls(points, xOffset, yOffset))
 		return false;
 	
-	return !areCrossedBuffers(points, buffer, xOffset, yOffset);
+	return !isCrossedFigureWithBuffer(points, xOffset, yOffset);
 }
 
 void BoardBase::incrementOrigins(Direction direction, int& xOffset, int& yOffset) const noexcept {
@@ -85,10 +85,11 @@ void BoardBase::clear() {
 	}
 }
 
-bool BoardBase::areCrossedBuffers(
-	const std::vector<std::vector<uint8_t>> &points,
-	const std::vector<std::vector<uint8_t>> &buffer,
-	int xOffset, int yOffset) const {
+bool
+BoardBase::isCrossedFigureWithBuffer(
+	const std::vector<std::vector<uint8_t>>& points,
+	int xOffset,
+	int yOffset) const {
 	for (auto i = 0; i < points.size(); ++i) {
 		for (auto j = 0; j < points[0].size(); ++j) {
 			// if buffer elements points are busy we cannot do this action

@@ -20,3 +20,8 @@ enum struct Action: uint32_t {
 	Shoot
 };
 
+enum struct FigureType: uint8_t {
+	FT_TYPE1 = 0,
+	FT_TYPE2,
+	FT_TYPE3
+};

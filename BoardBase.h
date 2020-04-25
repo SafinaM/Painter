@@ -24,11 +24,7 @@ struct BoardBase {
 	void clear();
 	
 	bool
-	areCrossedBuffers(
-		const std::vector<std::vector<uint8_t>>& points,
-		const std::vector<std::vector<uint8_t>>& buffer,
-		int xOffset = 0,
-		int yOffset = 0) const;
+	isCrossedFigureWithBuffer(const std::vector<std::vector<uint8_t>> &points, int xOffset, int yOffset) const;
 	
 	bool isCrossedFigureWithWalls(
 		const std::vector<std::vector<uint8_t>> &points,
