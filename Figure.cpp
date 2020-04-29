@@ -74,7 +74,8 @@ Direction Figure::getDirection() const noexcept {
 	return m_direction;
 }
 
-bool Figure::areCrossedFigures(const Figure& figure1, const Figure& figure2) {
+// yes it is awfull!!!
+bool Figure::areCrossedFigures(const Figure& figure1, const Figure& figure2) noexcept {
 	
 	const auto& points1 = figure1.getPoints();
 	const auto& points2 = figure2.getPoints();
@@ -85,11 +86,16 @@ bool Figure::areCrossedFigures(const Figure& figure1, const Figure& figure2) {
 	int xOffset2 = figure2.getXOffset();
 	int yOffset2 = figure2.getYOffset();
 	
-	for (auto i = 0; i < points1.size(); ++i) {
-		for (auto j = 0; j < points1[0].size(); ++j) {
-			// if buffer elements points are busy we cannot do this action
-			if (points1[i + xOffset1][j + yOffset1] && points2[i + yOffset2][j + xOffset2]) {
-				return true;
+	for (auto y1 = 0; y1 < points1.size(); ++y1) {
+		for (auto x1 = 0; x1 < points1[0].size(); ++x1) {
+			for (auto y2 = 0; y2 < points2.size(); ++y2) {
+				for (auto x2 = 0; x2 < points2[0].size(); ++x2) {
+					if (points1[y1][x1] &&
+						points2[y2][x2] &&
+						y1 + yOffset1 == y2 + yOffset2 &&
+						x1 + xOffset1 == x2 + xOffset2)
+							return true;
+				}
 			}
 		}
 	}

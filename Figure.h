@@ -31,7 +31,7 @@ struct Figure {
 	
 	void setColor(const uint32_t color) noexcept;
 	
-	static bool areCrossedFigures(const Figure& figure1, const Figure& figure2);
+	static bool areCrossedFigures(const Figure& figure1, const Figure& figure2) noexcept;
 
 
 protected:
