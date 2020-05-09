@@ -101,7 +101,8 @@ BoardBase::isCrossedFigureWithBuffer(
 	return false;
 }
 
-bool BoardBase::isCrossedFigureWithWalls(
+bool
+BoardBase::isCrossedFigureWithWalls(
 	const std::vector<std::vector<uint8_t>> &points,
 	int xOffset,
 	int yOffset) const {

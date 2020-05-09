@@ -1,27 +1,27 @@
 #pragma once
 
-enum struct Orientation: int {
-	First_0 = 0,
-	Second_90,
-	Third_180,
-	Fourth_270
+enum Orientation: uint32_t {
+	First_0    = 0,
+	Second_90  = 1,
+	Third_180  = 2,
+	Fourth_270 = 3
 };
 
-enum struct Direction: int {
-	Left = 0,
-	Right,
-	Down,
-	Up
+enum Direction: uint32_t {
+	Left  = 0,
+	Right = 1,
+	Down  = 2,
+	Up    = 3,
 };
 
 enum struct Action: uint32_t {
 	Move = 0,
-	ChooseDirection,
-	Shoot
+	Shoot,
+	ChooseDirection
 };
 
-enum struct FigureType: uint8_t {
-	FT_TYPE1 = 0,
-	FT_TYPE2,
-	FT_TYPE3
+enum struct OpponentMode: uint32_t {
+	Random = 0,
+	User,
+	ChooseDirection,
 };

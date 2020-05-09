@@ -3,27 +3,7 @@
 #include <rlutil.h>
 #include "Figure.h"
 
-Figure::Figure(Orientation orientation): m_orientation(orientation){}
-
-void Figure::setOrientationTypeAndDirection(Orientation orientation) {
-	m_orientation = orientation;
-	switch (orientation) {
-		case Orientation::First_0:
-			m_direction = Direction::Up;
-			break;
-		case Orientation::Third_180:
-			m_direction = Direction::Down;
-			break;
-		case Orientation::Fourth_270:
-			m_direction = Direction::Left;
-			break;
-		case Orientation::Second_90:
-			m_direction = Direction::Right;
-			break;
-		default:
-			break;
-	}
-}
+Figure::Figure(Orientation orientation): m_orientation(orientation) {}
 
 void Figure::move(Direction direction) noexcept {
 	if (direction == Direction::Right) {

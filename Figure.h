@@ -1,19 +1,16 @@
 #pragma once
 
 #include <vector>
+#include <unordered_map>
 #include <cstdint>
 #include <memory>
 #include "enums.h"
 
 struct Figure {
 	
-	FigureType figureType;
-	
 	virtual std::vector<std::vector<uint8_t>> getPoints(Orientation orientation) const = 0;
 	
 	std::vector<std::vector<uint8_t>> getPoints() const;
-	
-	void setOrientationTypeAndDirection(Orientation orientation);
 	
 	void move(Direction direction) noexcept;
 	
@@ -32,11 +29,10 @@ struct Figure {
 	void setColor(const uint32_t color) noexcept;
 	
 	static bool areCrossedFigures(const Figure& figure1, const Figure& figure2) noexcept;
-
-
-protected:
 	
 	Figure(Orientation orientation);
+	
+protected:
 	
 	Orientation m_orientation;
 	Direction m_direction;
