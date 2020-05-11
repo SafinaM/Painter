@@ -73,7 +73,7 @@ bool Figure::areCrossedFigures(const Figure& figure1, const Figure& figure2) noe
 					if (points1[y1][x1] &&
 						points2[y2][x2] &&
 						y1 + yOffset1 == y2 + yOffset2 &&
-						x1 + xOffset1 == x2 + xOffset2)
+						std::abs(x1 + xOffset1 - (x2 + xOffset2)) <= 1)
 							return true;
 				}
 			}
