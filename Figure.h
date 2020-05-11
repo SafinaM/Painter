@@ -8,6 +8,8 @@
 
 struct Figure {
 	
+	void setOrientationTypeAndDirection(Orientation orientation);
+	
 	virtual std::vector<std::vector<uint8_t>> getPoints(Orientation orientation) const = 0;
 	
 	std::vector<std::vector<uint8_t>> getPoints() const;
@@ -32,6 +34,7 @@ struct Figure {
 	
 	Figure(Orientation orientation);
 	
+	const static std::unordered_map<Orientation, Direction, std::hash<std::size_t>> directionByOrientation;
 protected:
 	
 	Orientation m_orientation;

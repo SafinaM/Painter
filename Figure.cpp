@@ -20,6 +20,15 @@ void Figure::move(Direction direction) noexcept {
 	}
 }
 
+void Figure::setOrientationTypeAndDirection(Orientation orientation) {
+	m_orientation = orientation;
+	
+	auto it = directionByOrientation.find(orientation);
+	if (it != directionByOrientation.end())
+		m_direction = it->second;
+//	setPoints(m_orientation);
+}
+
 std::vector<std::vector<uint8_t>> Figure::getPoints() const {
 	assert(points.size() != 0);
 	return points;
@@ -81,3 +90,11 @@ bool Figure::areCrossedFigures(const Figure& figure1, const Figure& figure2) noe
 	}
 	return false;
 }
+
+const std::unordered_map<Orientation, Direction, std::hash<std::size_t>> Figure::directionByOrientation = {
+	{Orientation::First_0,    Direction::Up},
+	{Orientation::Second_90,  Direction::Right},
+	{Orientation::Third_180,  Direction::Down},
+	{Orientation::Fourth_270, Direction::Left},
+	
+};
