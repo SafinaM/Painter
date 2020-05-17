@@ -11,11 +11,9 @@ BoardBase::BoardBase(uint32_t width, uint32_t height) :
 }
 
 BoardBase::BoardBase(
-	uint32_t width,
-	uint32_t height,
 	const std::vector<std::vector<uint8_t>>& buf) :
-	m_widthBoard(width),
-	m_heightBoard(height),
+	m_widthBoard(buf[0].size()),
+	m_heightBoard(buf.size()),
 	buffer(buf) {
 	
 	checking();

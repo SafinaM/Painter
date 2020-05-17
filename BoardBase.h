@@ -13,13 +13,11 @@ struct BoardBase {
 	BoardBase(uint32_t width, uint32_t height);
 	
 	BoardBase(
-		uint32_t width,
-		uint32_t height,
 		const std::vector<std::vector<uint8_t>>& buf);
 	
 	void debugPrint() const;
 	
-	bool allowMove(Direction direction, const Figure& figure) const;
+	virtual bool allowMove(Direction direction, const Figure& figure) const;
 	
 	void clear();
 	
@@ -29,7 +27,8 @@ struct BoardBase {
 		int xOffset,
 		int yOffset) const;
 	
-	bool isCrossedFigureWithWalls(
+	bool
+	isCrossedFigureWithWalls(
 		const std::vector<std::vector<uint8_t>>& points,
 		int xOffset,
 		int yOffset) const;
