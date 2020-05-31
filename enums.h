@@ -14,18 +14,6 @@ enum Direction: uint32_t {
 	Up    = 3,
 };
 
-enum struct Action: uint32_t {
-	Move = 0,
-	Shoot,
-	ChooseDirection
-};
-
-enum struct OpponentMode: uint32_t {
-	Random = 0,
-	User,
-	ChooseDirection,
-};
-
 enum BackgroundColor: int {
 	BC_DEFAULT    =-1,
 	BC_BLACK      = 0,
