@@ -12,7 +12,7 @@ struct Figure {
 	
 	virtual std::vector<std::vector<uint8_t>> getPoints(Orientation orientation) const = 0;
 	
-	std::vector<std::vector<uint8_t>> getPoints() const;
+	virtual std::vector<std::vector<uint8_t>> getPoints() const;
 	
 	void move(Direction direction) noexcept;
 	
