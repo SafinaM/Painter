@@ -9,6 +9,7 @@ set(SOURCES
 	PainterImpl.cpp
 	Figure.cpp
 	BoardBase.cpp
+	Point.cpp
 	)
 
 set(HEADERS

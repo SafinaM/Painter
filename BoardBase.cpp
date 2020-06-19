@@ -18,14 +18,6 @@ BoardBase::BoardBase(
 	
 	checking();
 }
-void BoardBase::debugPrint() const {
-	for (uint8_t i = 0; i < m_heightBoard; ++i) {
-		for (uint8_t j = 0; j < m_widthBoard; ++j) {
-			std::cout << +buffer[i][j];
-		}
-		std::cout << std::endl;
-	}
-}
 
 // for debug
 void BoardBase::setLine(uint32_t numY, uint32_t value) {
@@ -126,3 +118,5 @@ uint32_t BoardBase::getWidth() const noexcept {
 uint32_t BoardBase::getHeight() const noexcept {
 	return  m_heightBoard;
 }
+
+const std::array<Point, 4> BoardBase::neumannPoints  = { Point(1, 0), Point(-1, 0), Point(0, 1), Point(0, -1)};
